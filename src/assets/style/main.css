@@ -1,0 +1,118 @@
+html,body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+#root {
+  width: 100%;
+  height: 100%;
+}
+.stage {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: url('../img/background-image.jpg') no-repeat center center;
+  background-size: 100% 100%;
+}
+/*
+*img section start
+*/
+.img-sec {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  perspective: 1800;
+}
+.img-figure {
+  position: absolute;
+  width: 240px;
+  height: 300px;
+  background: #fefefe;
+  text-align: center;
+  transform-origin: 50%;
+  transform-style: preserve-3d;
+  transition: transform .6s ease-in-out, left .6s ease-in-out, top .6s ease-in-out;
+  
+}
+.img-figure.is-inverse {
+  transform: rotateY(180deg);
+}
+.img-figure img {
+  width: 70%;
+  max-height: 200px;
+  padding-top: 30px;
+  margin: 0 auto;
+}
+.img-figure .title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 22px;
+  font-size: 16px;
+  font-weight: normal;
+  color: #666;
+}
+.img-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 40px 30px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  color: #a7a0a2;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  background-color: #fff;
+  /*先开始时.img-back，旋转了180度，因为translateZ(1px)，位于正面图像的下方*/
+  /*当.img-figure旋转时，.img-back又旋转了180度，旋转度数为360,因为translateZ(1px)，位于正面图像的上方*/
+  transform: rotateY(180deg) translateZ(1px);
+  /*translateZ(1px) 是为了解决Safari 的bug 在http://www.imooc.com/video/11743 13 分 有解释*/
+  backface-visibility:hidden;
+}
+.img-back .loc {
+  position: absolute;
+  right: 30px;
+  bottom: 40px;
+  text-align: right;
+  font-size: 14px;
+}
+/*
+*img section end
+*/
+
+/*
+*controller section start
+*/
+.controller-nav {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  width: 720px;
+  height: 60px;
+  margin-left: -350px;
+  line-height: 60px;
+}
+.controller {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  opacity: .6;
+  background-image: url('../img/icon/controller.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  margin-right: 20px;
+}
+.controller.is-center {
+  background-image: url('../img/icon/controller-on.svg');
+}
+.controller.is-center.is-inverse {
+  background-image: url('../img/icon/controller-inverse.svg');
+}
+
+/*
+*controller section end
+*/
